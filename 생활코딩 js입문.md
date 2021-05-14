@@ -244,3 +244,129 @@ JS는 동적이기때문에 HTML과 달리 1+1를 그냥 문자열로써 출력�
 
 
 
+12. 객체 쓰기
+
+    ```html
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title></title>
+      </head>
+      <body>
+        <h1>Object</h1>
+        <h2>Create</h2>
+        <script>
+          var coworkers = {
+            "programmer" : "egoing",
+            "designer" : "leezhe"
+          };
+          document.write("programmer : "+coworkers.programmer+"<br>")
+          document.write("designer : "+coworkers.designer+"<br>")
+          coworkers.bookkeeper = "duru";
+          document.write("bookkeeper : "+coworkers.bookkeeper+"<br>")
+          coworkers["data scientist"] = "taeho";
+          document.write("data scientist : "+coworkers["data scientist"]+"<br>")
+    
+        </script>
+      </body>
+    </html>
+    
+    ```
+
+    Data scientist와 같이 빈칸이 있는 key값을 설정하고 불러오기 위해서는 dot(.) 을 쓰지않고, ["(key이름)"]을 사용해서 그 값을 쓰고, 불러온다.
+
+    ```html
+    <h2>Iterate</h2>
+        <script>
+          for (var key in coworkers) {
+            document.write(key + ':' + coworkers[key] + '<br>')
+          }
+        </script>
+    ```
+
+    이 for 문은 coworkers의 키값을 하나씩 순차적으로 key라는 변수에 할당하고, 이를 이용해서 본문의 출력함수를 수행한다.
+
+    
+
+13. 반복문
+
+    ```html
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8">
+        <title></title>
+      </head>
+      <body>
+        <h1>Loop & Array</h1>
+        <script>
+          var coworkers = ['one','two','three','four','add'];
+        </script>
+        <h2>Coworkers</h2>
+        <ul>
+          <script>
+            var i = 0;
+            while (i < coworkers.length) {
+              document.write('<li><a href="https://a.com/'+coworkers[i]+'">' + coworkers[i] + '</a></li>');
+              i+=1;
+            }
+          </script>
+        </ul>
+      </body>
+    </html>
+    
+    ```
+
+    이런식으로 반복문을쓰면, a.com/(coworkers의 각 값)을 링크로하는, 하이퍼링크가 걸린 값을 출력하게된다.
+
+    
+
+14. 함수
+
+    ```html
+    
+    <script>
+      function nightDayHander () {
+        var target = document.querySelector('body')
+        if(this.value === 'night'){
+          target.style.backgroundColor = 'black';
+          target.style.color = 'white';
+          this.value = 'day'
+    
+          var alist = document.querySelectorAll('a');
+          var i = 0;
+          while(i <alist.length){
+            alist[i].style.color = 'powderblue';
+            i+=1;
+          }
+    
+        } else {
+          target.style.backgroundColor = 'white';
+          target.style.color = 'black';
+          this.value = 'night'
+    
+          var alist = document.querySelectorAll('a');
+          var i = 0;
+          while(i <alist.length){
+            alist[i].style.color = 'blue';
+            i+=1;
+          }
+        }
+      }
+    
+      </script>
+    
+    <input id=night_day type="button" value="night" onclick="
+      nightDayHander(this)
+      ">
+    ```
+
+    기존의 버튼을 눌렀을때 동작하는 내용을 함수로써 만들어서 지정한다면, 동일한 버튼이 여러개있을때 버튼들에 대한 유지보수가 매우 간편해진다!
+
+    
+
+    
+
+    
+
