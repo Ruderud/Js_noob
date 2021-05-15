@@ -246,6 +246,8 @@ JS는 동적이기때문에 HTML과 달리 1+1를 그냥 문자열로써 출력�
 
 12. 객체 쓰기
 
+    배열과는 다르게, 순서없이 데이터를 집어넣음.
+
     ```html
     <!DOCTYPE html>
     <html>
@@ -362,11 +364,84 @@ JS는 동적이기때문에 HTML과 달리 1+1를 그냥 문자열로써 출력�
       ">
     ```
 
-    기존의 버튼을 눌렀을때 동작하는 내용을 함수로써 만들어서 지정한다면, 동일한 버튼이 여러개있을때 버튼들에 대한 유지보수가 매우 간편해진다!
+    기존의 버튼을 눌렀을때 동작하는 내용을 함수로써 만들어서 지정한다면, 동일한 버튼이 여러개있을때 버튼들에 대한 유지보수가 매우 간편해진다.
+
+
+
+16. jQuery이용
+
+    ```html
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    ```
+
+    jQuery라고 누가 만들어놓은 함수들 모아놓은 라이브러리를 사용한다.
+
+    이렇게해두면 기존에 작성했던 코드들을 보다 간결하게 만들 수 있다.
 
     
 
+    ```js
+    var links = {
+      setColor : function(color) {
+        // var alist = document.querySelectorAll('a');
+        // var i = 0;
+        // while(i <alist.length){
+        //   alist[i].style.color = color;
+        //   i+=1;
+        // }
+        $('a').css('color', color);
+      }
     
+    }
+    
+    var body = {
+      setColor : function(color) {
+        // document.querySelector('body').style.color = color;
+        $('body').css('color', color);
+      },
+      setBackGroundColor : function(color) {
+        // document.querySelector('body').style.backgroundColor = color;
+        $('body').css('backgroundColor', color);
+      },
+    
+    }
+    ```
+
+    (주석내용은 이전에 내가 직접함수의 내용을 구현한것, 그리고 새로작성된 $로 시작하는 코드는 jQuery에 저장되어있는 함수를 가져와서 구현한것. 작동은 동일하게 한다)
 
     
+
+17. API(Application program interface)
+
+    ```html
+    <input id=Click type="button" value="Click" onclick="alert('hello~')">
+    ```
+
+    ![image-20210515154831850](/Users/jeong-gyeonghun/Library/Application Support/typora-user-images/image-20210515154831850.png)
+
+    저 얼럿창은 내가 직접만들지 않았지만, 창이 뜨도록 의도한것은 내가 한것임.
+
+    그렇기에 얼럿창을 띄우게끔 유도한 alert라는 저 코드는 API라고 할 수 있음
+
+
+
+18. 웹페이지에 테그를 추가/삭제하기 위해서는 Document 으로 검색
+
+    이래도 안나오면 DOM(Document Object Model)로 검색
+
+    웹페이지 자체를 컨트롤해야한다면 Window객체를 검색(ex, 페이지에 새 창을 띄워야하거나, 웹페이지의 창크기)
+
+    웹페이지를 바꾸지않고도 내용을 바꾸고싶다면 ajax
+
+    사용자를 위한 개인화된 서비스 을 제공하기 위해서는 Cookie
+
+    인터넷 없이도 서비스가능한 웹어플리케이션은 Offline web application
+
+    화상통신 웹엡 webRTC
+
+    사용자 음성인식 speech (APi)
+
+    3차원 그래픽 (webGL)
+
+    가상현실 webVR
 
